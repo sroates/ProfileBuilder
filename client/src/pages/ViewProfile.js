@@ -5,9 +5,6 @@ import { useState, useEffect } from 'react';
 
 export default function ViewProfile(){
 
-    const [name, setName] = useState('');
-    const [age, setAge] = useState('');
-    const [interests, setInterests] = useState('');
     const [email, setEmail] = useState('');
     const navigate = useNavigate(); // Use useNavigate instead of useHistory
 
@@ -33,23 +30,9 @@ export default function ViewProfile(){
             console.log("result", result)
             console.log(result.applicant); // Log the data for debugging
 
-            console.log(result.applicant.name)
-            console.log(result.applicant.email)
-            console.log(result.applicant.age)
-            console.log(result.applicant.interests)
-           
-            setName(result.applicant.name);
-            setAge(result.applicant.age);
-            setInterests(result.applicant.interests);
 
-            // Navigate to AppConfirmation with the applicant data
             navigate('/profileDisplay', {
-                state: {
-                    name: result.applicant.name,
-                    email: result.applicant.email,
-                    age: result.applicant.age,
-                    interests: result.applicant.interests,
-                  },
+                state: result.applicant,
             });
         } catch (error) {
             console.error("There was a problem with the fetch operation:", error);

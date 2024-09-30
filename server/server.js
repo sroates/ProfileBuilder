@@ -65,5 +65,6 @@ app.post("/profileFound", async (req, res) => {
       background = "No information available.";
   }
 
-  res.json({ success: true,  applicant: { name, email, age, interests } });
+  // res.json({ success: true,  applicant: { name, email, age, interests } });
+  res.json({ success: true,  applicant: applicant});
 });
